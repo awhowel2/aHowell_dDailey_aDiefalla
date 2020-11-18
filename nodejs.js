@@ -1,13 +1,13 @@
 var http = require('http');
-//var mongodb = require('mongodb');
 var fs = require('fs');
+
 http.createServer(function (req, res) {
   fs.readFile('homepage.html', function(err, data) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
   });
-}).listen(8080);
+}).listen(8080); // http://localhost:8080/
 
 const {MongoClient} = require('mongodb');
 
