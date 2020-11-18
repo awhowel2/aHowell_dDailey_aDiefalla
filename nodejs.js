@@ -9,7 +9,6 @@ http.createServer(function (req, res) {
   });
 }).listen(8080); // http://localhost:8080/ 
 
-//test 
 
 const {MongoClient} = require('mongodb');
 
