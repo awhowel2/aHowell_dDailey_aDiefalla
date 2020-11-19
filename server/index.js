@@ -1,3 +1,8 @@
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const pool = require('./db');
+
 var http = require('http');
 var fs = require('fs');
 
