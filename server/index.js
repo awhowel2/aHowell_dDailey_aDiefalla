@@ -1,51 +1,33 @@
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const pool = require('./db');
 
-var http = require('http');
-var fs = require('fs');
+var express = require('express');  
+var app = express();  
+var MongoClient = require('mongodb').MongoClient;  
+var assert = require('assert');
+//const cors = require('cors');
 
-http.createServer(function (req, res) {
-  fs.readFile('homepage.html', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
-}).listen(8080); // http://localhost:8080/ 
+//app.use(cors());
 
+var mongodb;
 
-const {MongoClient} = require('mongodb');
+// Connection URL
+var url = 'mongodb+srv://overlord-user:compengirules@cluster0.10bua.mongodb.net/admin_portal?retryWrites=true&w=majority';
 
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log( `- ${db.name}`));
-};
-
-async function main(){
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://overlord-user:compengirules@cluster0.10bua.mongodb.net/test?retryWrites=true&w=majority";
- 
-
-    const client = new MongoClient(uri);
- 
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
- 
-        // Make the appropriate DB calls
-        await  listDatabases(client);
- 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
+// Create a MongoDB connection pool and start the application
+// after the database connection is ready
+MongoClient.connect(url, (err, db) => {
+    if (err) {
+      //logger.warn(`Failed to connect to the database. ${err.stack}`);
+      console.log('failed to connect to db');
     }
-}
+    app.locals.db = db;
+    app.listen(5000, () => {
+      //logger.info(`Node.js app is listening at http://localhost:5000/`);
+      console.log("app is listening on port 5000");
+    });
+  });
 
-main().catch(console.error);
+app.get('/', function(request, response) {
+    const db = request.app.locals.db;
+    db.listCollections({});
+    response.send('see console');
+});
