@@ -49,30 +49,35 @@ router.post('/',
                     case "ADMIN":
                         res.render('links',{
                             title: 'Admin links',
+                            name: user.username,
                             role: 'ADMIN',
                         });
                         break;
                     case "FINANCE_ADMIN":
                         res.render('links',{
                             title: 'Admin links',
+                            name: user.username,
                             role: 'FINANCE_ADMIN',
                         });
                         break;
                     case "SALES_ADMIN":
                         res.render('links',{
                             title: 'Admin links',
+                            name: user.username,
                             role: 'SALES_ADMIN',
                         });
                         break;
                     case "HR_ADMIN":
                         res.render('links',{
                             title: 'Admin links',
+                            name: user.username,
                             role: 'HR_ADMIN',
                         });
                         break;
                     case "TECH_ADMIN":
                         res.render('links',{
                             title: 'Admin links',
+                            name: user.username,
                             role: 'TECH_ADMIN',
                         });
                         break;

@@ -6,7 +6,7 @@ body {
  }
  p {
     color: #197BBD;
-    font-family: Verdana	, Helvetica, sans-serif;
+    font-family: Verdana, Helvetica, sans-serif;
  }
  
  p.enterInstruc {
@@ -24,5 +24,15 @@ body {
  
  h2{
     color: #204B57;
+    font-family: Verdana, Helvetica, sans-serif;
+ }
+
+ h3{
+    color: #204B57;
+    font-family: Verdana, Helvetica, sans-serif;
+ }
+
+ a {
+    color: #0000EE;
     font-family: Verdana, Helvetica, sans-serif;
  }
