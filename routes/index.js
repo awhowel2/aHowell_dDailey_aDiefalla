@@ -6,7 +6,7 @@ const router = express.Router();        //grabbing express router
 const { check, validationResult } = require('express-validator');   //import express-validator (to validate user input)
 const Registration = mongoose.model('Registration');    //import mongo schema model 
 
-//tell it where to find file with user and password (users.htpasswd)
+//tell it where to find file with user and password (users.htpasswd) and create basic authentication object
 const basic = auth.basic({
     file: path.join(__dirname, '../users.htpasswd'),
   });
@@ -33,7 +33,7 @@ router.post('/',
     if (errors.isEmpty()){
         const registration = new Registration(req.body);    //create a new registration object w/ data from server and save to db
         registration.save()
-            .then(() => {res.redirect('/registrations') //res.send('Thank you for your registration!');  //success message
+            .then(() => {res.redirect('/registrations') //on success redirect to registrations page
             })
             .catch((err) => {
                 console.log(err);
@@ -50,12 +50,12 @@ router.post('/',
   });
 
 //route to post all registrations
-router.get('/registrations', basic.check((req, res) => {
+router.get('/registrations', /*basic.check(*/ (req, res) => {
     //this find method returns all records in collection if parameters not specified
     Registration.find()
         .then((registrations) => {
             res.render('index', {title: 'Listing registrations', registrations});   //sends all records in collection to view template
         })
         .catch(() => { res.send('Sorry! Something went wrong.'); });
-}));
+})/*)*/;
 module.exports = router;
