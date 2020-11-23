@@ -16,16 +16,21 @@ block content
         case roles
             when "ADMIN"
                 for item in _admin
-                    p= item
+                    a(href="")= item
+                    br
             when "FINANCE_ADMIN"
                 for item in _finance
-                    p= item
+                    a(href="")= item
+                    br
             when "SALES_ADMIN"
                 for item in _sales
-                    p= item
+                    a(href="")= item
+                    br
             when "HR_ADMIN"
                 for item in _hr
-                    p= item
+                    a(href="")= item
+                    br
             when "TECH_ADMIN"
                 for item in _tech
-                    p= item
+                    a(href="")= item
+                    br
