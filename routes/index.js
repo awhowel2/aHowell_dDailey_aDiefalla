@@ -45,7 +45,38 @@ router.post('/',
             if (user.password == users.password)
             {
                 //redirect to links based on role
-                res.redirect('/registrations');
+                switch(user.role){
+                    case "ADMIN":
+                        res.render('links',{
+                            title: 'Admin links',
+                            role: 'ADMIN',
+                        });
+                        break;
+                    case "FINANCE_ADMIN":
+                        res.render('links',{
+                            title: 'Admin links',
+                            role: 'FINANCE_ADMIN',
+                        });
+                        break;
+                    case "SALES_ADMIN":
+                        res.render('links',{
+                            title: 'Admin links',
+                            role: 'SALES_ADMIN',
+                        });
+                        break;
+                    case "HR_ADMIN":
+                        res.render('links',{
+                            title: 'Admin links',
+                            role: 'HR_ADMIN',
+                        });
+                        break;
+                    case "TECH_ADMIN":
+                        res.render('links',{
+                            title: 'Admin links',
+                            role: 'TECH_ADMIN',
+                        });
+                        break;
+                }
             }
             else
             {
