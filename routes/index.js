@@ -6,6 +6,9 @@ const router = express.Router();        //grabbing express router
 const { check, validationResult } = require('express-validator');   //import express-validator (to validate user input)
 const Users = mongoose.model('Users');    //import mongo schema model 
 
+var adminType;
+var currentUser;
+
 //tell it where to find file with user and password (users.htpasswd) and create basic authentication object
 const basic = auth.basic({
     file: path.join(__dirname, '../users.htpasswd'),
@@ -44,42 +47,53 @@ router.post('/',
         Users.findOne({username: users.username}, (err, user) => {
             if (user.password == users.password)
             {
+                currentUser = user.username;
                 //redirect to links based on role
                 switch(user.role){
                     case "ADMIN":
-                        res.render('links',{
+                        adminType = 'ADMIN';
+                        res.redirect('/links')
+                        /*res.render('links',{
                             title: 'Admin links',
                             name: user.username,
                             role: 'ADMIN',
-                        });
+                        });*/
                         break;
                     case "FINANCE_ADMIN":
-                        res.render('links',{
-                            title: 'Admin links',
-                            name: user.username,
-                            role: 'FINANCE_ADMIN',
-                        });
+                        adminType = 'FINANCE_ADMIN';
+                        res.redirect('/links')
+                        // res.render('links',{
+                        //     title: 'Admin links',
+                        //     name: user.username,
+                        //     role: 'FINANCE_ADMIN',
+                        // });
                         break;
                     case "SALES_ADMIN":
-                        res.render('links',{
-                            title: 'Admin links',
-                            name: user.username,
-                            role: 'SALES_ADMIN',
-                        });
+                        adminType = 'SALES_ADMIN';
+                        res.redirect('/links')
+                        // res.render('links',{
+                        //     title: 'Admin links',
+                        //     name: user.username,
+                        //     role: 'SALES_ADMIN',
+                        // });
                         break;
                     case "HR_ADMIN":
-                        res.render('links',{
-                            title: 'Admin links',
-                            name: user.username,
-                            role: 'HR_ADMIN',
-                        });
+                        adminType = 'HR_ADMIN';
+                        res.redirect('/links')
+                        // res.render('links',{
+                        //     title: 'Admin links',
+                        //     name: user.username,
+                        //     role: 'HR_ADMIN',
+                        // });
                         break;
                     case "TECH_ADMIN":
-                        res.render('links',{
-                            title: 'Admin links',
-                            name: user.username,
-                            role: 'TECH_ADMIN',
-                        });
+                        adminType = 'TECH_ADMIN';
+                        res.redirect('/links')
+                        // res.render('links',{
+                        //     title: 'Admin links',
+                        //     name: user.username,
+                        //     role: 'TECH_ADMIN',
+                        // });
                         break;
                 }
             }
@@ -103,13 +117,25 @@ router.post('/',
   });
 
 //route to post all registrations
-router.get('/registrations', /*basic.check(*/ (req, res) => {
+router.get('/registrations', (req, res) => {
     //this find method returns all records in collection if parameters not specified
-    console.log(req.get('Referer'));
     Users.find()
         .then((users) => {
             res.render('index', {title: 'Listing registrations', users});   //sends all records in collection to view template
         })
         .catch(() => { res.send('Sorry! Something went wrong.'); });
-})/*)*/;
+});
+
+router.get('/links', (req, res) => {
+    //this method routes to the different links based on user role
+    if (req.get('Referer') == "http://localhost:3000/" || req.get('Referer') == "http://localhost:3000/links"){
+        res.render('links',{
+            title: 'Admin links',
+            name: currentUser,
+            role: adminType,
+        });
+    } else {
+        res.redirect('/');
+    }
+})
 module.exports = router;
