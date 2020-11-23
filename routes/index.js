@@ -31,8 +31,8 @@ router.post('/',
     const errors = validationResult(req);
 
     if (errors.isEmpty()){
-        /*const users = new Users(req.body);    //create a new users object w/ data from server and save to db
-        users.save()
+        const users = new Users(req.body);    //create a new users object w/ data from server and save to db
+        /*users.save()
             .then(() => {res.redirect('/registrations') //on success redirect to registrations page
             })
             .catch((err) => {
@@ -41,7 +41,21 @@ router.post('/',
             });*/
         
         //code for login check
-
+        Users.findOne({username: users.username}, (err, user) => {
+            if (user.password == users.password)
+            {
+                //redirect to links based on role
+                res.redirect('/registrations');
+            }
+            else
+            {
+                res.render('form', {
+                    title: 'Registration form',
+                    incorrect: 1,
+                    data: req.body,
+                });
+            }
+        });
         
     } else {
         res.render('form', { 

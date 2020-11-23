@@ -12,6 +12,10 @@ body {
  p.enterInstruc {
     color: #204B57;
  }
+
+ p.errorMsg {
+    color: red;
+ }
  
  h1 {
     color: #125EBA;
