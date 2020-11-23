@@ -2,30 +2,30 @@ extends layout
 
 block content
 
-    var _admin = ["Manage User", "Accounts", "Assign Roles", "Help Desk"];
-    var _finance = ["Finance Reports", "Accounts Payable", "Accounts Receiveable", "Tax"];
-    var _sales = ["Sales Reports", "Sales Leads", "Sales Demo"];
-    var _hr = ["New Hire On-boarding", "Benefits", "Payroll", "Off-boarding", "HR Reports"];
-    var _tech = ["Application Monitoring", "Tech Support", "App Development", "App Admin", "Release Management"];
+    - var _admin = ["Manage User", "Accounts", "Assign Roles", "Help Desk"];
+    - var _finance = ["Finance Reports", "Accounts Payable", "Accounts Receiveable", "Tax"];
+    - var _sales = ["Sales Reports", "Sales Leads", "Sales Demo"];
+    - var _hr = ["New Hire On-boarding", "Benefits", "Payroll", "Off-boarding", "HR Reports"];
+    - var _tech = ["Application Monitoring", "Tech Support", "App Development", "App Admin", "Release Management"];
 
     div(class="centered")
-        h2 = "Welcome " + `${role}`
+        h2= `${role}`
+        - var roles = `${role}`
         br
         br
-        case `${role}` {
-            when ADMIN
+        case roles
+            when "ADMIN"
                 for item in _admin
-                    p item
-            when FINANCE_ADMIN
+                    p= item
+            when "FINANCE_ADMIN"
                 for item in _finance
-                    p item
-            when SALES_ADMIN
+                    p= item
+            when "SALES_ADMIN"
                 for item in _sales
-                    p item
-            when HR_ADMIN
+                    p= item
+            when "HR_ADMIN"
                 for item in _hr
-                    p item
-            when HR_ADMIN
+                    p= item
+            when "TECH_ADMIN"
                 for item in _tech
-                    p item
-        }
+                    p= item
