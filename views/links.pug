@@ -9,7 +9,8 @@ block content
     - var _tech = ["Application Monitoring", "Tech Support", "App Development", "App Admin", "Release Management"];
 
     div(class="centered")
-        h2= `${role}`
+        h2= "Welcome " + `${name}` + "!"
+        h3= "Role: " + `${role}`
         - var roles = `${role}`
         br
         br
@@ -18,19 +19,24 @@ block content
                 for item in _admin
                     a(href="")= item
                     br
+                    br
             when "FINANCE_ADMIN"
                 for item in _finance
                     a(href="")= item
+                    br
                     br
             when "SALES_ADMIN"
                 for item in _sales
                     a(href="")= item
                     br
+                    br
             when "HR_ADMIN"
                 for item in _hr
                     a(href="")= item
                     br
+                    br
             when "TECH_ADMIN"
                 for item in _tech
                     a(href="")= item
+                    br
                     br
