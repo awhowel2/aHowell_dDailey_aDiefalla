@@ -33,7 +33,7 @@ router.post('/',
     if (errors.isEmpty()){
         const registration = new Registration(req.body);    //create a new registration object w/ data from server and save to db
         registration.save()
-            .then(() => {res.send('Thank you for your registration!');  //success message
+            .then(() => {res.redirect('/registrations') //res.send('Thank you for your registration!');  //success message
             })
             .catch((err) => {
                 console.log(err);
