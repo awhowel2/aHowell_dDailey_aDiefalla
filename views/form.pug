@@ -8,22 +8,22 @@ block content
             for error in errors
                 li= error.msg
 
-             
-    form(action="." method="POST")
-        label(for="name") Name:
-        input(
-            type="text"
-            id="name"
-            name="name"
-            value = data.name
-        )
+    div(class="centered")         
+        form(action="." method="POST")
+            label(for="name") Name:
+            input(
+                type="text"
+                id="name"
+                name="name"
+                value = data.name
+            )
 
-        label(for="email") Email:
-        input(
-            type="email"
-            id="email"
-            name="email"
-            value = data.email
-        )
+            label(for="email") Email:
+            input(
+                type="email"
+                id="email"
+                name="email"
+                value = data.email
+            )
 
-        input(type="submit" value="Submit")
+            input(type="submit" value="Submit")
