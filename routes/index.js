@@ -100,6 +100,7 @@ router.post('/',
 //route to post all registrations
 router.get('/registrations', /*basic.check(*/ (req, res) => {
     //this find method returns all records in collection if parameters not specified
+    console.log(req.get('Referer'));
     Users.find()
         .then((users) => {
             res.render('index', {title: 'Listing registrations', users});   //sends all records in collection to view template
