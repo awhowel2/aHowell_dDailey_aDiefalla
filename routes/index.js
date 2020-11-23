@@ -4,7 +4,7 @@ const auth = require('http-auth');      //import http-auth
 const mongoose = require('mongoose');   //import mongoose
 const router = express.Router();        //grabbing express router
 const { check, validationResult } = require('express-validator');   //import express-validator (to validate user input)
-const Registration = mongoose.model('Registration');    //import mongo schema model 
+const Users = mongoose.model('Users');    //import mongo schema model 
 
 //tell it where to find file with user and password (users.htpasswd) and create basic authentication object
 const basic = auth.basic({
@@ -20,25 +20,28 @@ router.get('/', (req, res) => {
 router.post('/', 
 [
     //validation that name and email are length 1 before submission
-    check('name')
+    check('username')
         .isLength({min: 1})
-        .withMessage('Please enter a name'),    
-    check('email')
+        .withMessage('Please enter your username'),    
+    check('password')
         .isLength({min: 1})
-        .withMessage('Please enter an email'),
+        .withMessage('Please enter your password'),
 ],
 (req, res) => {
     const errors = validationResult(req);
 
     if (errors.isEmpty()){
-        const registration = new Registration(req.body);    //create a new registration object w/ data from server and save to db
-        registration.save()
+        /*const users = new Users(req.body);    //create a new users object w/ data from server and save to db
+        users.save()
             .then(() => {res.redirect('/registrations') //on success redirect to registrations page
             })
             .catch((err) => {
                 console.log(err);
                 res.send('Sorry! Something went wrong.');   //if error caught saving, print not success message
-            });
+            });*/
+        
+        //code for login check
+
         
     } else {
         res.render('form', { 
@@ -52,9 +55,9 @@ router.post('/',
 //route to post all registrations
 router.get('/registrations', /*basic.check(*/ (req, res) => {
     //this find method returns all records in collection if parameters not specified
-    Registration.find()
-        .then((registrations) => {
-            res.render('index', {title: 'Listing registrations', registrations});   //sends all records in collection to view template
+    Users.find()
+        .then((users) => {
+            res.render('index', {title: 'Listing registrations', users});   //sends all records in collection to view template
         })
         .catch(() => { res.send('Sorry! Something went wrong.'); });
 })/*)*/;

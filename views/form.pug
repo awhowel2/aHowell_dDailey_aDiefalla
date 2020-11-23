@@ -19,21 +19,21 @@ block content
         p(class="enterInstruc") Enter username and password below:   
 
         form(action="." method="POST")
-            label(for="name") Username: 
+            label(for="username") Username: 
             input(
                 type="text"
-                id="name"
-                name="name"
-                value = data.name
+                id="username"
+                name="username"
+                value = data.username
             )
             br
             br
-            label(for="email") Password: 
+            label(for="password") Password: 
             input(
-                type="email"
-                id="email"
-                name="email"
-                value = data.email
+                type="password"
+                id="password"
+                name="password"
+                value = data.password
             )
             br
             br

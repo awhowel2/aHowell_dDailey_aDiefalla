@@ -17,7 +17,7 @@ mongoose.connect(process.env.DATABASE, {
     });
 
 //require model for mongo schema
-require('./models/Registration');
+require('./models/Users');
 
 //listening port
 const app = require('./app');       //importing the express app created in app.js file (we left off the .js in require())
