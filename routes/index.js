@@ -110,7 +110,8 @@ router.post('/',
     } else {
         res.render('form', { 
             title: 'Registration form',
-            errors: errors.array(),
+            //errors: errors.array(),
+            incorrect: 1,
             data: req.body,
         });
     }
