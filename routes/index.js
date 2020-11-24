@@ -138,5 +138,16 @@ router.get('/links', (req, res) => {
     } else {
         res.redirect('/');
     }
+});
+
+//Prewrote manage users link
+router.get('/manageUsers', (req, res) => {
+    if(req.get('Referer') == "http://localhost:3000/links"){
+        res.render('links', {
+            title: 'Manage Users',
+        });
+    } else {
+        res.redirect('/');
+    }
 })
 module.exports = router;

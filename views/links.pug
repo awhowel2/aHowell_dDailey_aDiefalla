@@ -16,10 +16,17 @@ block content
         br
         case roles
             when "ADMIN"
-                for item in _admin
-                    a(href="")= item
-                    br
-                    br
+                //- for item in _admin
+                //-     a(href="")= item
+                a(href="/manageUsers") Manage User Accounts
+                br
+                br
+                a(href="") Assign Roles
+                br
+                br
+                a(href="") Help Desk
+                br
+                br
             when "FINANCE_ADMIN"
                 for item in _finance
                     a(href="")= item
@@ -40,3 +47,5 @@ block content
                     a(href="")= item
                     br
                     br
+        button(type="button" class="logout") 
+            a(href="http://localhost:3000" class="buttonLink") Logout
