@@ -37,11 +37,19 @@ body {
     font-family: Verdana, Helvetica, sans-serif;
  }
 
+ a.buttonLink {
+   text-decoration: none;
+   color: #204B57; 
+ }
+
  button.logout {
     padding: 16px 32px;
     text-align: center;
     display: inline-block;
     cursor: pointer;
+    background-color: #87CEFA;
+    border: 2px solid #87CEFA;
+    border-radius: 25px;
  }
 
  tr {
