@@ -164,6 +164,14 @@ router.post('/Registration', (req, res) => {
     //Redirects back to login
     res.redirect('/');
   });
+
+router.get('/changeRole', (req,res) => {
+    
+});
+
+router.post('/changeRole', (req,res) => {
+
+});
   
 
 module.exports = router;

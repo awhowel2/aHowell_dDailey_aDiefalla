@@ -3,38 +3,44 @@ extends layout
 block content
     
     div(class="centered")
-        h2= "Welcomes " + `${name}` + "!"
+        h2= "Welcome " + `${name}` + "!"
         h3= "Role: " + `${role}`
         - var roles = `${role}`
-    table(style='width:100%', border='1')
-        tr
-            th Role types  
-        tr
-            td 1.ADMIN
-        tr
-            td 2.FINANCE_ADMIN
-        tr
-            td 3.SALES_ADMIN
-        tr
-            td 4.HR_ADMIN
-        tr
-            td 5.TECH_ADMIN 
+         table(style='width:30%; margin-left:auto; margin-right:auto', border='1')
+            tr
+                th Role types  
+            tr
+                td 1.ADMIN
+            tr
+                td 2.FINANCE_ADMIN
+            tr
+                td 3.SALES_ADMIN
+            tr
+                td 4.HR_ADMIN
+            tr
+                td 5.TECH_ADMIN 
      
         
     
     div(class="centered")  
         form(action='/Registration' method='POST')
-            label(for='username') UserName:
+            br
+            br
+            label(for='username') Username: 
             input#username(type='text' name='username')
-            
-            label(for='password') Password:
+            br
+            br
+            label(for='password') Password: 
             input#password(type='password' name='password')
-            
-            label(for='Roles') Roles:
+            br
+            br
+            label(for='Roles') Roles: 
             input#Roles(type='text' name='Roles')
-            
+            br
+            br
             input(type="submit" value="Submit")
 
-        
-    button(type="button" class="logout") 
-        a(href="http://localhost:3000/" class="buttonLink") Logout
+        br
+        br
+        button(type="button" class="logout") 
+            a(href="http://localhost:3000/" class="buttonLink") Logout
