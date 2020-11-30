@@ -53,47 +53,22 @@ router.post('/',
                     case "ADMIN":
                         adminType = 'ADMIN';
                         res.redirect('/links')
-                        /*res.render('links',{
-                            title: 'Admin links',
-                            name: user.username,
-                            role: 'ADMIN',
-                        });*/
                         break;
                     case "FINANCE_ADMIN":
                         adminType = 'FINANCE_ADMIN';
                         res.redirect('/links')
-                        // res.render('links',{
-                        //     title: 'Admin links',
-                        //     name: user.username,
-                        //     role: 'FINANCE_ADMIN',
-                        // });
                         break;
                     case "SALES_ADMIN":
                         adminType = 'SALES_ADMIN';
                         res.redirect('/links')
-                        // res.render('links',{
-                        //     title: 'Admin links',
-                        //     name: user.username,
-                        //     role: 'SALES_ADMIN',
-                        // });
                         break;
                     case "HR_ADMIN":
                         adminType = 'HR_ADMIN';
                         res.redirect('/links')
-                        // res.render('links',{
-                        //     title: 'Admin links',
-                        //     name: user.username,
-                        //     role: 'HR_ADMIN',
-                        // });
                         break;
                     case "TECH_ADMIN":
                         adminType = 'TECH_ADMIN';
                         res.redirect('/links')
-                        // res.render('links',{
-                        //     title: 'Admin links',
-                        //     name: user.username,
-                        //     role: 'TECH_ADMIN',
-                        // });
                         break;
                 }
             }
@@ -127,6 +102,7 @@ router.get('/registrations', (req, res) => {
         .catch(() => { res.send('Sorry! Something went wrong.'); });
 });
 
+
 router.get('/links', (req, res) => {
     //this method routes to the different links based on user role
     if (req.get('Referer') == "http://localhost:3000/" || req.get('Referer') == "http://localhost:3000/links"){
@@ -143,11 +119,52 @@ router.get('/links', (req, res) => {
 //Prewrote manage users link
 router.get('/manageUsers', (req, res) => {
     if(req.get('Referer') == "http://localhost:3000/links"){
-        res.render('links', {
+        res.render('manageUsers', {
             title: 'Manage Users',
+            name: currentUser,
+            role: 'ADMIN ',
         });
     } else {
         res.redirect('/');
     }
 })
+
+router.get('/delete', (req, res) => {
+    if(req.get('Referer') == "http://localhost:3000/manageUsers"){
+        res.render('delete', {
+            title: 'Account Deletion',
+            name: currentUser,
+            role: 'Account Deletion',
+        });
+    } else {
+        res.redirect('/');
+    }
+})
+
+router.get('/Registration', (req, res) => {
+    if(req.get('Referer') == "http://localhost:3000/manageUsers"){
+        res.render('Registration', {
+            title: 'Account Registration',
+            name: currentUser,
+            role: 'Account Registration',
+        });
+    } else {
+        res.redirect('/');
+    }
+})
+
+router.post('/Registration', (req, res) => {
+    //Creates new User varible with input parameters
+    var newUser = new Users({username: req.body.username, password: req.body.password, role: req.body.Roles});
+    //Saves User to database
+    newUser.save(function (err){
+        if(err)
+            console.log("Error in creation")
+    })
+    //Redirects back to login
+    res.redirect('/');
+  });
+  
+
 module.exports = router;
+

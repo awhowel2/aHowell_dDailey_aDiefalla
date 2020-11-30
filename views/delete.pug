@@ -1,0 +1,32 @@
+
+
+extends layout
+
+block content
+
+    - var _admin = ["Manage User Accounts", "Assign Roles", "Help Desk"];
+    - var _finance = ["Finance Reports", "Accounts Payable", "Accounts Receiveable", "Tax"];
+    - var _sales = ["Sales Reports", "Sales Leads", "Sales Demo"];
+    - var _hr = ["New Hire On-boarding", "Benefits", "Payroll", "Off-boarding", "HR Reports"];
+    - var _tech = ["Application Monitoring", "Tech Support", "App Development", "App Admin", "Release Management"];
+    
+    div(class="centered")
+        h2= "Welcomes " + `${name}` + "!"
+        h3= "Role: " + `${role}`
+        - var roles = `${role}`
+            h4= "please enter the username of the account"
+     
+        
+    
+    div(class="centered")  
+        form(action='/delete' method='POST')
+            label(for='username') UserName:
+            input#username(type='text' name='username')
+           
+           
+            p    
+                button Submit
+
+        
+        button(type="button" class="logout") 
+            a(href="/" class="buttonLink") Logout
