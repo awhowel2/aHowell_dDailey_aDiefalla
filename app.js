@@ -1,3 +1,5 @@
+// app.js gives the path to all the views (pug files) and the path to the routing (index.js)
+
 const express = require('express');         //import express module
 const path = require('path');               //*****PUG CODE import path module
 const routes = require('./routes/index');   //import export value of routes file

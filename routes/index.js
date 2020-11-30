@@ -1,3 +1,5 @@
+//index.js holds all the routing between db and node js (post) and pug and node js (get)
+
 const express = require('express');     //import express
 const path = require('path');           //import path for http-auth
 const auth = require('http-auth');      //import http-auth
@@ -93,14 +95,14 @@ router.post('/',
   });
 
 //route to post all registrations
-router.get('/registrations', (req, res) => {
+/*router.get('/registrations', (req, res) => {
     //this find method returns all records in collection if parameters not specified
     Users.find()
         .then((users) => {
             res.render('index', {title: 'Listing registrations', users});   //sends all records in collection to view template
         })
         .catch(() => { res.send('Sorry! Something went wrong.'); });
-});
+});*/
 
 
 router.get('/links', (req, res) => {

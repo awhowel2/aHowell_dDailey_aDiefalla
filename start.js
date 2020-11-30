@@ -1,3 +1,5 @@
+// start.js is the file that runs first and links paths to the other js files (besides index.js) to open the listen port and connect to the db through mongoose
+
 require('dotenv').config();         //importing the dotenv module (used for db connection details)
 const mongoose = require('mongoose');       //import mongoose module for easy database querying and viewing
 
