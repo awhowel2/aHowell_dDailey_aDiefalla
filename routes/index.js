@@ -177,8 +177,13 @@ router.get('/changeRole', (req,res) => {
 });
 
 router.post('/changeRole', (req,res) => {
-    Users.findOne({username: req.body.username}, (err, user) => {
-    });
+
+    Users.findOne({ username: req.body.username }, function (err, doc){
+        doc.role = req.body.role;
+        doc.save();
+      });
+
+    res.redirect('/');
 });
   
 
