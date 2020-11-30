@@ -154,7 +154,7 @@ router.get('/Registration', (req, res) => {
 })
 
 router.post('/Registration', (req, res) => {
-    //Creates new User varible with input parameters
+    //Creates new User variable with input parameters
     var newUser = new Users({username: req.body.username, password: req.body.password, role: req.body.Roles});
     //Saves User to database
     newUser.save(function (err){

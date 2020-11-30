@@ -9,15 +9,14 @@ block content
         h2= "Welcomes " + `${name}` + "!"
         h3= "Role: " + `${role}`
         - var roles = `${role}`
-            h4= "please enter the username of the account"
+            h4= "Please enter the username of the account:"
      
         
     
     div(class="centered")  
         form(action='/delete' method='POST')
-            label(for='username') UserName:
+            label(for='username') Username:
             input#username(type='text' name='username')
-           
            
             input(type="submit" value="Submit")
 
