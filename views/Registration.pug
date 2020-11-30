@@ -35,7 +35,12 @@ block content
             br
             br
             label(for='Roles') Roles: 
-            input#Roles(type='text' name='Roles')
+            select(name ='Roles')
+                option(value='ADMIN') ADMIN
+                option(value='FINANCE_ADMIN') FINANCE_ADMIN
+                option(value='TECH_ADMIN') TECH_ADMIN
+                option(value='HR_ADMIN') HR_ADMIN
+                option(value='SALES_ADMIN') SALES_ADMIN
             br
             br
             input(type="submit" value="Submit")

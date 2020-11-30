@@ -141,6 +141,16 @@ router.get('/delete', (req, res) => {
     }
 })
 
+router.post('/delete', (req, res) => {
+
+    Users.findOneAndDelete({ username: req.body.username }, function (err, docs) { 
+        if (err){ 
+            console.log(err) 
+        }
+    })
+    res.redirect('/')
+});
+
 router.get('/Registration', (req, res) => {
     if(req.get('Referer') == "http://localhost:3000/manageUsers"){
         res.render('Registration', {
