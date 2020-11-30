@@ -166,7 +166,14 @@ router.post('/Registration', (req, res) => {
   });
 
 router.get('/changeRole', (req,res) => {
-    
+    if(req.get('Referer') == "http://localhost:3000/manageUsers"){
+        res.render('changerole', {
+            title: 'Change User Roles',
+            name: currentUser,
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 router.post('/changeRole', (req,res) => {
