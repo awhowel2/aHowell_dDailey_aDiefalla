@@ -9,17 +9,18 @@ block content
         h2= "Welcome " + `${name}` + "!"
         h3= "Role: " + `${role}`
         - var roles = `${role}`
-            h4= "Please enter the username of the account:"
+            p= "Please enter the username of the account:"
      
         
     
     div(class="centered")  
         form(action='/delete' method='POST')
-            label(for='username') Username:
+            label(for='username') Username: 
             input#username(type='text' name='username')
-           
+            br
+            br
             input(type="submit" value="Submit")
 
-        
+        br
         button(type="button" class="logout") 
             a(href="/" class="buttonLink") Logout

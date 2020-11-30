@@ -43,3 +43,25 @@ body {
     display: inline-block;
     cursor: pointer;
  }
+
+ tr {
+   border: 2px solid #204B57;
+   font-family: Verdana, Helvetica, sans-serif;
+   border-collapse: collapse;
+ }
+
+ th {
+   border: 2px solid #204B57;
+   padding-top: 12px;
+   padding-bottom: 12px;
+   background-color: #125EBA;
+   color: white;
+ }
+
+ td {
+   border: 2px solid #204B57;
+   padding: 8px;
+ }
+
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(odd){background-color: white;}
